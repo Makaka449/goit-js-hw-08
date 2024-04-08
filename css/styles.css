@@ -1,21 +1,19 @@
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  justify-content: space-between; 
 }
 
 .gallery-item {
-  margin: 10px;
+  width: calc(33.33% - 10px); 
+  margin-bottom: 20px;
 }
 
 .gallery-link {
-  text-decoration: none;
+  display: block;
 }
 
 .gallery-image {
-  width: 150px;
-  height: 100px;
-  object-fit: cover;
+  width: 100%; 
+  height: auto;
 }

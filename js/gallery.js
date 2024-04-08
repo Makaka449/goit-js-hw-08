@@ -64,3 +64,30 @@ const images = [
     },
 ];
 
+const gallery = document.querySelector('.gallery');
+const createGalleryItem = ({ preview, original, description }) => {
+  return `
+    <li class="gallery-item">
+      <a class="gallery-link" href="${original}">
+        <img
+          class="gallery-image"
+          src="${preview}"
+          data-source="${original}"
+          alt="${description}"
+        />
+      </a>
+    </li>
+  `;
+};
+const galleryMarkup = images.reduce((acc, image) => acc + createGalleryItem(image), '');
+gallery.innerHTML = galleryMarkup;
+gallery.addEventListener('click', (event) => {
+  event.preventDefault();
+  if (event.target.nodeName !== 'IMG') {
+    return;
+  }
+  const imageSrc = event.target.dataset.source;
+  const instance = basicLightbox.create(`<img src="${imageSrc}" alt="">`);
+  instance.show();
+});
+
